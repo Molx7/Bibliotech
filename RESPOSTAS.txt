@@ -1,0 +1,92 @@
+REFLEXÃO CRÍTICA - BIBLIOTECH
+
+1. Integração
+
+Que problema de integração entre o front-end e o back-end você enfrentou e como resolveu?
+
+Tive dificuldade para fazer a tela conversar com a API. Em alguns momentos, a API não estava aberta; em outros, o projeto ainda estava usando um banco diferente do MySQL. Por isso, a tela não conseguia buscar ou salvar os livros como deveria. Ajustei a configuração para usar o MySQL, iniciei a versão atual do projeto e testei o cadastro conferindo se o livro aparecia no banco. Também deixei mensagens na tela para ajudar a entender quando algo dá errado.
+
+2. Contrato da API e validação
+
+Como o front-end trata as respostas 400, 404 e 409 da API? Por que o back-end precisa validar os dados mesmo que o front-end já valide?
+
+Quando a API informa que os dados estão inválidos, a tela mostra a mensagem recebida para explicar o que precisa ser corrigido. A tela também verifica alguns campos antes de enviar o cadastro. 
+
+3. Uso crítico da IA
+
+Qual foi o prompt mais importante que você utilizou e por quê? Que erro ou imperfeição o código gerado apresentou e como foi corrigido? Por que um programador não pode copiar e colar código gerado por IA sem testá-lo?
+
+prompt mais importante:
+Você é um desenvolvedor sênior me ajudando a entregar uma avaliação acadêmica. Construa o sistema "BiblioTech" (acervo de biblioteca): API REST em Java + MySQL + front-end web que consome a API. Trabalhe em etapas, me explique o que fez em cada uma e aguarde minha confirmação antes de avançar.
+
+## STACK OBRIGATÓRIA
+- Back-end: Java 17+, Spring Boot 3.x, Maven, Spring Web, Spring Data JPA, Validation, MySQL Driver
+- IMPORTANTE: Spring Boot 3 usa `jakarta.persistence` e `jakarta.validation`, NUNCA `javax.*`
+- Front-end: HTML/CSS/JavaScript puro (fetch API), sem build, para facilitar a execução
+- Banco: MySQL, configurado via application.properties
+
+## ESTRUTURA DO REPOSITÓRIO
+/backend  (projeto Spring Boot)
+/frontend (index.html, style.css, app.js)
+/evidencias (vazia, eu colocarei os prints)
+RESPOSTAS.txt
+README.md (como rodar back e front)
+.gitignore (ignorar target/, node_modules/, .idea/)
+
+## REGRAS DE NEGÓCIO
+Entidade Livro:
+- id: gerado automaticamente
+- titulo: obrigatório, 3 a 150 caracteres
+- autor: obrigatório
+- isbn: obrigatório e ÚNICO
+- genero: obrigatório
+- exemplares: inteiro >= 0
+
+## CONTRATO DA API (documente no README ANTES de codar)
+| Operação | Requisição | Banco | Resposta |
+| Create | POST /livros | INSERT | 201 Created + JSON do livro |
+| Read (listar) | GET /livros | SELECT | 200 OK + lista JSON |
+| Read (por id) | GET /livros/{id} | SELECT WHERE id | 200 OK ou 404 |
+| Update | PUT /livros/{id} | UPDATE | 200 OK + JSON atualizado, ou 404 |
+| Delete | DELETE /livros/{id} | DELETE | 204 No Content, ou 404 |
+
+Erros:
+- Dados inválidos (campo vazio, título fora do tamanho, exemplares negativo): 400 Bad Request com mensagem explicativa em JSON
+- ISBN duplicado (no POST e no PUT, ignorando o próprio livro): 409 Conflict com mensagem
+- id inexistente: 404 com mensagem
+- Formato de erro padronizado, ex.: { "status": 400, "mensagem": "...", "erros": ["titulo: ..."] }
+
+## BACK-END (Etapa 2)
+1. Pacotes: controller, service, repository, model (+ exception e dto se necessário)
+2. Entity Livro com JPA e Bean Validation (@NotBlank, @Size(min=3,max=150), @PositiveOrZero/@Min(0), @Valid no controller)
+3. LivroRepository extends JpaRepository (com existsByIsbn e existsByIsbnAndIdNot)
+4. Regras de negócio (ISBN duplicado, 404) ficam na SERVICE, nunca no controller
+5. Controller fino, retornando ResponseEntity com os status corretos (201, 200, 204, 400, 404, 409)
+6. @RestControllerAdvice com @ExceptionHandler para MethodArgumentNotValidException (400), exceção de não encontrado (404) e ISBN duplicado (409)
+7. Nenhuma consulta montada por concatenação de String (evitar SQL Injection); usar apenas métodos do JPA
+8. CORS configurado para permitir a origem do front-end (WebMvcConfigurer, métodos GET/POST/PUT/DELETE/OPTIONS)
+9. application.properties com: url do MySQL (createDatabaseIfNotExist=true), usuário/senha por variáveis ou placeholders, spring.jpa.hibernate.ddl-auto=update, spring.jpa.show-sql=true
+
+## FRONT-END (Etapa 3)
+Requisitos:
+- Listar livros em tabela
+- Formulário de cadastro
+- Edição de livro existente (preenche o formulário)
+- Exclusão com confirmação (confirm()) antes de remover
+- Exibir ao usuário, de forma compreensível, as mensagens de erro da API (400, 404, 409), lendo o JSON de erro e mostrando em alerta/área de mensagens
+- Consumir a API com fetch enviando/recebendo JSON (Content-Type: application/json), com URL e verbo corretos
+- Visual limpo e responsivo
+
+## ERROS COMUNS A EVITAR
+- CORS bloqueando o front
+- URL ou verbo errado no front
+- PUT sem enviar o id
+- Front ignorando erros 400/404/409
+- Retornar 200 para tudo
+- Imports javax.persistence em vez de jakarta.persistence
+- Regra de negócio dentro do controller
+
+
+Um problema que encontrei foi a configuração inicial usando um banco temporário, em vez do MySQL pedido na atividade. Também houve confusão entre a versão antiga e a atual do backend, e por isso a tela deixou de conseguir se comunicar com a API. Corrigi a configuração para usar o MySQL e testei um cadastro, confirmando que ele apareceu no banco.
+
+Não é seguro simplesmente copiar o que a IA gera. O código pode parecer certo, mas usar uma configuração diferente da pedida ou falhar quando é executado. É preciso ler, testar e conferir o resultado no sistema e no banco.

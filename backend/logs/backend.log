@@ -1,0 +1,45 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-11-16T20:26:39.453-03:00  INFO 3100 --- [bibliotech] [           main] c.e.bibliotech.BibliotechApplication     : Starting BibliotechApplication v0.0.1-SNAPSHOT using Java 17.0.21 with PID 3100 (C:\Users\molos\Desktop\Avaliação 16.11\16.11\backend\target\bibliotech-0.0.1-SNAPSHOT.jar started by molos in C:\Users\molos\Desktop\Avaliação 16.11\16.11\backend)
+2026-11-16T20:26:39.457-03:00  INFO 3100 --- [bibliotech] [           main] c.e.bibliotech.BibliotechApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-11-16T20:26:40.429-03:00  INFO 3100 --- [bibliotech] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-16T20:26:40.490-03:00  INFO 3100 --- [bibliotech] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interface.
+2026-11-16T20:26:41.161-03:00  INFO 3100 --- [bibliotech] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-11-16T20:26:41.176-03:00  INFO 3100 --- [bibliotech] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-16T20:26:41.177-03:00  INFO 3100 --- [bibliotech] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-11-16T20:26:41.226-03:00  INFO 3100 --- [bibliotech] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-16T20:26:41.228-03:00  INFO 3100 --- [bibliotech] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1700 ms
+2026-11-16T20:26:41.463-03:00  INFO 3100 --- [bibliotech] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-16T20:26:41.563-03:00  INFO 3100 --- [bibliotech] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-11-16T20:26:41.613-03:00  INFO 3100 --- [bibliotech] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-16T20:26:42.049-03:00  INFO 3100 --- [bibliotech] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-16T20:26:42.088-03:00  INFO 3100 --- [bibliotech] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-16T20:26:42.264-03:00  INFO 3100 --- [bibliotech] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@61ab6521
+2026-11-16T20:26:42.266-03:00  INFO 3100 --- [bibliotech] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-16T20:26:42.321-03:00  WARN 3100 --- [bibliotech] [           main] org.hibernate.dialect.Dialect            : HHH000511: The 5.7.30 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-11-16T20:26:42.324-03:00  WARN 3100 --- [bibliotech] [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-16T20:26:43.101-03:00  INFO 3100 --- [bibliotech] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-16T20:26:43.139-03:00  INFO 3100 --- [bibliotech] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16T20:26:43.697-03:00  WARN 3100 --- [bibliotech] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-16T20:26:44.138-03:00  INFO 3100 --- [bibliotech] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-11-16T20:26:44.157-03:00  INFO 3100 --- [bibliotech] [           main] c.e.bibliotech.BibliotechApplication     : Started BibliotechApplication in 5.243 seconds (process running for 5.822)
+2026-11-16T20:26:44.362-03:00  INFO 3100 --- [bibliotech] [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-16T20:26:44.364-03:00  INFO 3100 --- [bibliotech] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-16T20:26:44.365-03:00  INFO 3100 --- [bibliotech] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+Hibernate: select l1_0.id,l1_0.autor,l1_0.exemplares,l1_0.isbn,l1_0.titulo from livros l1_0
+Hibernate: select l1_0.id,l1_0.autor,l1_0.exemplares,l1_0.isbn,l1_0.titulo from livros l1_0 where l1_0.isbn=?
+Hibernate: insert into livros (autor,exemplares,isbn,titulo) values (?,?,?,?)
+Hibernate: select count(*) from livros l1_0 where l1_0.id=?
+Hibernate: select l1_0.id,l1_0.autor,l1_0.exemplares,l1_0.isbn,l1_0.titulo from livros l1_0 where l1_0.id=?
+Hibernate: delete from livros where id=?
+Hibernate: select l1_0.id,l1_0.autor,l1_0.exemplares,l1_0.isbn,l1_0.titulo from livros l1_0
+Hibernate: select l1_0.id,l1_0.autor,l1_0.exemplares,l1_0.isbn,l1_0.titulo from livros l1_0
+Hibernate: select l1_0.id,l1_0.autor,l1_0.exemplares,l1_0.isbn,l1_0.titulo from livros l1_0

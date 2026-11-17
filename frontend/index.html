@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bibliotech</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Bibliotech</h1>
+
+        <form id="livroForm" novalidate>
+            <input type="hidden" id="livroId" />
+
+            <div class="campo">
+                <label for="titulo">Título</label>
+                <input id="titulo" name="titulo" type="text" required minlength="3" maxlength="150" />
+            </div>
+
+            <div class="campo">
+                <label for="autor">Autor</label>
+                <input id="autor" name="autor" type="text" required />
+            </div>
+
+            <div class="campo">
+                <label for="isbn">ISBN</label>
+                <input id="isbn" name="isbn" type="text" required />
+            </div>
+
+            <div class="campo">
+                <label for="exemplares">Exemplares</label>
+                <input id="exemplares" name="exemplares" type="number" min="0" required />
+            </div>
+
+            <div class="botoes">
+                <button type="submit" id="submitBtn">Salvar</button>
+                <button type="button" id="cancelBtn" class="secondary">Cancelar</button>
+            </div>
+        </form>
+
+        <div id="status" class="status" aria-live="polite"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>ISBN</th>
+                    <th>Exemplares</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="livroTableBody"></tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

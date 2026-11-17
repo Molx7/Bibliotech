@@ -1,0 +1,6 @@
+com\example\bibliotech\service\LivroService.class
+com\example\bibliotech\BibliotechApplication.class
+com\example\bibliotech\repository\LivroRepository.class
+com\example\bibliotech\model\Livro.class
+com\example\bibliotech\exception\ApiExceptionHandler.class
+com\example\bibliotech\controller\LivroController.class
